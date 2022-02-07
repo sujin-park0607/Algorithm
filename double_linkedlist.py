@@ -30,7 +30,7 @@ class NodeMgmt:
         while node:
             print(node.data)
             node = node.next
-            
+
     #앞에서부터 데이터찾기
     def search_from_head(self, data):
         if self.head == None:
@@ -76,7 +76,24 @@ class NodeMgmt:
 
         node.prev = new 
 
+    #특정 노드 뒤에 데이터추가
+    def insert_next(self, data, next_data):
+        if self.head == None:
+            self.head = Node(data)
+            return True
 
+        node = self.head
+        while node.data != next_data:
+            node = node.next
+            
+            if node == None:
+                return False
+        new = Node(data)
+        next_new = node.next
+        next_new.prev = new
+        new.next = next_new
+        new.prev = node
+        node.next = new 
 
 
     
