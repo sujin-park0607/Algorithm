@@ -170,6 +170,11 @@ for del_num in delete_nums:
         print('delete failed', del_num)
 
 
+#시간복잡도
+#O(logN)
+
+
+
 
             
 
