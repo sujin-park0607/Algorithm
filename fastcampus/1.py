@@ -20,6 +20,7 @@ else:
     print('mixed')
 
 #다른풀이
+
 #오름차순 True, 내림차순 True 초기상태
 #오름차순 False ->ascending
 #내림차순 False-> descending
