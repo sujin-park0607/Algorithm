@@ -8,4 +8,3 @@ result = 0
 for i in range(len(data_list)):
     result += sum(data_list[:i+1])
 
-print(result)
