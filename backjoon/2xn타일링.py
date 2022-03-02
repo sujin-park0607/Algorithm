@@ -1,11 +1,10 @@
 n = int(input())
 
-d = [] * 1000
+dp = [0] * 1001
+dp[1] = 1
+dp[2] = 2
 
+for i in range(3,1001):
+    dp[i] = dp[i-1] + dp[i-2]
 
-def dp(x):
-    if(x==1): return 1
-    if(x==1): return 2
-    if d[x] != 0: return d[x]
-    d[x] = dp(x-1)+dp(x-2) % 10007
-    return d[x]
+print(dp[n] % 10007)

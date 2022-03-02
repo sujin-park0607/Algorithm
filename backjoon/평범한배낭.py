@@ -8,6 +8,6 @@ for i in range(1,n+1):
         if weight > j:
             array[i][j] = array[i-1][j]
         else:
-            array[i][j] = max(array[i-1][j], array[i][j-weight] + value)
+            array[i][j] = max(array[i-1][j], array[i-1][j-weight] + value)
 
-print(array[i][j]) 
+print(array[n][k]) 
