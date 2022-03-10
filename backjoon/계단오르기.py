@@ -1,34 +1,21 @@
+import sys
+input = sys.stdin.readline
+
 n = int(input())
-
-array = []
-
+stair = [0]
 for _ in range(n):
-    array.append(int(input()))
-
-sort_array = sorted(array,reverse=True)
+    stair.append(int(input()))
 
 
-result = 0
-for a in range(n):
-    i = array.index(sort_array[a])
+if n == 1:
+    print(stair[1])
+else:
+    dp = [0] * (n+1)
+    dp[1] = stair[1]
+    dp[2] = stair[1] + stair[2]
 
-    if i==0 or array[i+1]=='o' and array[i+2] == 'o':
-        print(i)
-        continue
-        
-    elif i == (n-1) or array[i-1]=='o' and array[i-2] == 'o':
-        print(i)
-        continue
+    for i in range(3,n+1):
+        dp[i] = max(dp[i-3] + stair[i-1] + stair[i], dp[i-2] + stair[i] )
 
-    else:
-        print(i)
-        if array[i-1] == 'o' and array[i+1] == 'o':
-            continue
-        else:
-            result += array[i]
-            array[i] = 'o'
-
-    
-
-print(result)
+    print(dp[n])                                                                                                                                                           
 
