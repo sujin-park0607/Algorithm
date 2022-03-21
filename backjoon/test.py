@@ -1,49 +1,39 @@
-from collections import deque
-
-def bfs(array, a, b):
-    q = deque()
-    q.append((a,b))
-    ground[a][b] = 0
+def grade(num):
+    if num >= 90:
+        grade = "수"
+    elif num >= 80:
+        grade = "우"
+    elif num >= 70:
+        grade = "미"
+    elif num >= 60:
+        grade = "양"
+    else:
+        grade = "가"
     
-    while q:
-        x,y = q.popleft()
+    return grade
 
-        for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
-        
-            if nx < 0 or nx>= N or ny<0 or ny>=M:
-                continue
-            
-            if ground[nx][ny] == 1:
-                ground[nx][ny] = 0
-                q.append((nx,ny))
-    return
+while True:
+
+    name = input("이름: ")
+    kor = int(input("국어: "))
+    eng = int(input("영어: "))
+    mat = int(input("수학: "))
+    sci= int(input("과학: "))
 
 
-T = int(input())
+    sum = kor + eng + mat + sci
+    ave = sum/4
+    print(ave)
+    grade_num = grade(ave)
 
-dx = [0,0,1,-1]
-dy = [1,-1,0,0]
-for _ in range(T):
-    N, M, K = map(int, input().split())
-    cnt = 0
 
-    ground = [[0]*M for _ in range(N)]
-
-    for _ in range(K):
-        x, y = map(int, input().split())
-        ground[x][y] = 1
-
-    for a in range(N):
-        for b in range(M):
-            if ground[a][b] == 1:
-                bfs(ground,a,b)
-                cnt += 1
-
-    print(cnt) 
+    print("\n")
+    print("     ###성적표###      ")
+    print("\n")
+    print("성명:",name)
+    print("국어:",kor,"영어:",eng,"수학:",mat,"과학:",sci)
+    print("총점:",sum,"평균:",ave,"등급:",grade_num)
+    print("\n")
 
 
 
-
-    
