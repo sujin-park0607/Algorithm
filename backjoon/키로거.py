@@ -3,32 +3,40 @@ test_case = int(input())
 
 for _ in range(test_case):
     string = list(input())
-    stack = []
-    buffer = []
-    for s in string:
+    
+    left_stack = []
+    right_stack = []
 
-        if s == '<':
-            if len(stack) == 0:
+    for x in string:
+        if x == '<':
+            if len(left_stack) == 0:
                 continue
             else:
-                pop = stack.pop()
-                buffer.append(pop)
-        elif s == '>':
-            if len(buffer) == 0:
+                pop = left_stack.pop()
+                right_stack.append(pop)
+        
+        elif x == '>':
+            if len(right_stack) == 0:
                 continue
             else:
-                pop = buffer.pop()
-                stack.append(pop)
-        elif s == '-':
-            if len(stack) == 0:
+                pop = right_stack.pop()
+                left_stack.append(pop)
+        
+        elif x == '-':
+            if len(left_stack) == 0:
                 continue
             else:
-                stack.pop()
+                left_stack.pop()
+        
         else:
-            stack.append(s)
-            if len(buffer) != 0:
-                for i in buffer:
-                    pop = buffer.pop()
-                    stack.append(pop)
+            left_stack.append(x)
+    
+    #틀린이유
+    left_stack.extend(reversed(right_stack))
+    print("".join(left_stack))
+                
+                
 
-    print("".join(stack))
+            
+
+
