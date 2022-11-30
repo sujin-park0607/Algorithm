@@ -1,3 +1,4 @@
+#union find알고리즘 활용 
 def find(x):
     if x == parent[x]:
         return x
@@ -10,28 +11,23 @@ def union(x,y):
     x = find(x)
     y = find(y)
 
-    if x != y:
-        parent[y] = x
-        number[x] += number[y]
+    parent[y] = x
 
-test_case = int(input())
+node = int(input())
+edge = int(input())
 
-for _ in range(test_case):
-    parent = dict()
-    number = dict()
+parent = []
+for i in range(0,node+1):
+    parent.append(i)
 
-    f = int(input())
+for _ in range(edge):
+    a,b = map(int,input().split())
+    union(a,b)
 
-    for _ in range(f):
-        x, y = input().split(' ')
-
-        if x not in parent:
-            parent[x] = x
-            number[x] = 1
-
-        if y not in parent:
-            parent[y] = y
-            number[y] = 1
-
-        union(x,y)
-        print(number[find(x)])
+# cnt = 0
+# computer = find(1)
+for i in range(1,len(parent)):
+    print(find(i), end=" ")
+#     if find(i) == computer:
+#         cnt+=1
+# print(cnt-1) 
