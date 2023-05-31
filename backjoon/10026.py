@@ -36,6 +36,7 @@ rb_visited = [[False for i in range(N)] for i in range(N)]
 
 # print(rgb_visited)
 # print(location)
+
 dx = [-1,1,0,0]
 dy = [0,0,-1,1]
 
